@@ -1,13 +1,13 @@
 {
-  "caption": "ΔF1 of audio classification on labels without a voice-over vs. with a voice-over. A large negative value means a model does much worse once narration is removed — evidence it leaned on speech as a shortcut. Gemini 1.5 Flash drops ~17%, suggesting its training data was speech-heavy; the effect largely disappears in Gemini 2.0 Flash, suggesting it was addressed.",
+  "caption": "ΔF1 of audio classification on labels without a voice-over vs. with a voice-over. A large negative value means a model does much worse once narration is removed — evidence it leaned on speech as a shortcut. Gemini 1.5 Flash drops ~18%, suggesting its training data was speech-heavy; the effect largely disappears in Gemini 2.0 Flash, suggesting it was addressed.",
   "metric": "ΔF1 (A): no voice-over − with voice-over",
   "models": [
-    { "model": "Gemini 1.5 Pro",   "delta": -18.16 },
-    { "model": "Gemini 1.5 Flash", "delta": -17.25 },
-    { "model": "OLA",              "delta": -10.09 },
-    { "model": "PandaGPT",         "delta": -3.92 },
-    { "model": "Gemini 2.0 Flash", "delta": -0.20 },
-    { "model": "VideoLLaMA 2",     "delta": 3.97 },
-    { "model": "Unified-IO 2",     "delta": 4.98 }
+    { "model": "Gemini 1.5 Pro",   "delta": -18.88 },
+    { "model": "Gemini 1.5 Flash", "delta": -18.12 },
+    { "model": "OLA",              "delta": -9.80 },
+    { "model": "PandaGPT",         "delta": -4.24 },
+    { "model": "Gemini 2.0 Flash", "delta": -0.43 },
+    { "model": "VideoLLaMA 2",     "delta": 4.89 },
+    { "model": "Unified-IO 2",     "delta": 5.58 }
   ]
 }

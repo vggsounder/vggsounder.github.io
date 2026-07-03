@@ -1,0 +1,13 @@
+{
+  "caption": "ΔF1 of visual classification on videos without static images vs. videos that are essentially a static image. Every model scores higher on truly moving footage — visible classes are recognised more reliably from dynamic videos than from static clips. OLA benefits the most (~7 F1).",
+  "metric": "ΔF1 (V): no static images − with static images",
+  "models": [
+    { "model": "OLA",              "delta": 7.34 },
+    { "model": "Unified-IO 2",     "delta": 3.41 },
+    { "model": "PandaGPT",         "delta": 3.02 },
+    { "model": "VideoLLaMA 2",     "delta": 3.02 },
+    { "model": "Gemini 2.0 Flash", "delta": 2.67 },
+    { "model": "Gemini 1.5 Flash", "delta": 2.18 },
+    { "model": "Gemini 1.5 Pro",   "delta": 0.75 }
+  ]
+}

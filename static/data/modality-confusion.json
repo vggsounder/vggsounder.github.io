@@ -1,17 +1,16 @@
 {
   "caption": "Modality confusion measures how often adding a second input modality makes a model forget a label it got right unimodally (lower is better). When μ(A) > μ(V), the model forgets audible classes more often than visible ones — a sign it prefers the video modality. When μ(A) ≈ μ(V), the model treats both modalities in a balanced way.",
-  "_note": "muA values for Gemini 2.0 Flash (2.07) and Unified-IO 2 (10.20) were recovered from corrupted cells in static/tables/main-results.html — confirm against the paper before publishing.",
   "models": [
-    { "model": "OLA",              "family": "Foundation", "muA": 17.07, "muV": 6.32 },
-    { "model": "VideoLLaMA 2",     "family": "Foundation", "muA": 14.34, "muV": 5.43 },
-    { "model": "Gemini 1.5 Flash", "family": "Foundation", "muA": 14.36, "muV": 4.10 },
-    { "model": "PandaGPT",         "family": "Foundation", "muA": 10.06, "muV": 6.63 },
-    { "model": "Unified-IO 2",     "family": "Foundation", "muA": 10.20, "muV": 4.67 },
-    { "model": "Gemini 1.5 Pro",   "family": "Foundation", "muA": 3.07,  "muV": 4.23 },
-    { "model": "Gemini 2.0 Flash", "family": "Foundation", "muA": 2.07,  "muV": 5.25 },
-    { "model": "AV-Siam",          "family": "Embedding",  "muA": 10.30, "muV": 8.96 },
-    { "model": "Equi-AV",          "family": "Embedding",  "muA": 7.95,  "muV": 6.91 },
-    { "model": "DeepAVFusion",     "family": "Embedding",  "muA": 4.10,  "muV": 3.73 },
-    { "model": "CAV-MAE",          "family": "Embedding",  "muA": 3.96,  "muV": 6.01 }
+    { "model": "OLA",              "family": "Foundation", "muA": 17.34, "muV": 6.23 },
+    { "model": "VideoLLaMA 2",     "family": "Foundation", "muA": 14.51, "muV": 5.43 },
+    { "model": "Gemini 1.5 Flash", "family": "Foundation", "muA": 13.25, "muV": 4.12 },
+    { "model": "PandaGPT",         "family": "Foundation", "muA": 9.45,  "muV": 6.33 },
+    { "model": "Unified-IO 2",     "family": "Foundation", "muA": 10.80, "muV": 4.64 },
+    { "model": "Gemini 1.5 Pro",   "family": "Foundation", "muA": 2.65,  "muV": 4.03 },
+    { "model": "Gemini 2.0 Flash", "family": "Foundation", "muA": 2.59,  "muV": 4.79 },
+    { "model": "AV-Siam",          "family": "Embedding",  "muA": 10.76, "muV": 8.55 },
+    { "model": "Equi-AV",          "family": "Embedding",  "muA": 7.77,  "muV": 6.28 },
+    { "model": "DeepAVFusion",     "family": "Embedding",  "muA": 4.21,  "muV": 3.42 },
+    { "model": "CAV-MAE",          "family": "Embedding",  "muA": 4.07,  "muV": 4.93 }
   ]
 }
