@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // ---- modality-balance badges (top-right toggle) ----
         // High μ(A) means the model forgets audible answers once video is added,
         // i.e. it leans on video — and vice versa.
-        const BALANCE_RATIO = 1.5;
+        const BALANCE_RATIO = 2;
         const balanceOf = (m) => {
           if (m.muA >= m.muV * BALANCE_RATIO) return 'video centric';
           if (m.muV >= m.muA * BALANCE_RATIO) return 'audio centric';

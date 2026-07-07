@@ -11,13 +11,13 @@
       "label": "Audio only",
       "predicted": ["male speech, man speaking"],
       "verdict": "correct",
-      "note": "Given only the audio, the model predicts the man speaking — the correct label — and never mentions the horse."
+      "note": "Given only the audio, the model predicts the man speaking - the correct label, and never mentions the horse."
     },
     "av": {
       "label": "Audio + Video",
       "predicted": ["horse clip-clop"],
       "verdict": "wrong",
-      "note": "Adding the video makes the model drop the correct label and predict the horse instead. The extra modality overwrote a correct answer — that regression is modality confusion."
+      "note": "Adding the video makes the model drop the correct label and predict the horse instead. The extra modality overwrote a correct answer, whcih we call modality confusion."
     }
   }
 }

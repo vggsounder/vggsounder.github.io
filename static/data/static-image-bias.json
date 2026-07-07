@@ -1,5 +1,5 @@
 {
-  "caption": "ΔF1 of visual classification on videos without static images vs. videos that are essentially a static image. Every model scores higher on truly moving footage — visible classes are recognised more reliably from dynamic videos than from static clips. OLA benefits the most (~7 F1).",
+  "caption": "ΔF1 of visual classification on real, moving videos vs. clips that are just a still frame. Every model scores higher on moving footage — visible classes are recognised more reliably in motion than in stills. OLA benefits the most (~7 F1).",
   "metric": "ΔF1 (V): no static images − with static images",
   "models": [
     { "model": "OLA",              "delta": 7.34 },

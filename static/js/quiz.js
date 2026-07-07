@@ -95,10 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
       resultBox.className = 'quiz-result ' + (pct >= 80 ? 'is-good' : pct >= 50 ? 'is-mid' : 'is-low');
       resultBox.innerHTML = `
         <strong>${pct}% correct</strong> — you matched ${correct} of ${total} modality decisions.
-        The coloured tags reveal each label's true modality:
-        <span class="label audible">audible</span>
-        <span class="label visible">visible</span>
-        <span class="label both">audible &amp; visible</span>.
+        Each label now shows its true modality next to it.
         On Mechanical Turk we rejected batches scoring below 45% on hidden gold-standard clips like this one.`;
       submitBtn.style.display = 'none';
       resetBtn.style.display = '';

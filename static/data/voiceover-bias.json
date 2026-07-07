@@ -1,5 +1,5 @@
 {
-  "caption": "ΔF1 of audio classification on labels without a voice-over vs. with a voice-over. A large negative value means a model does much worse once narration is removed — evidence it leaned on speech as a shortcut. Gemini 1.5 Flash drops ~18%, suggesting its training data was speech-heavy; the effect largely disappears in Gemini 2.0 Flash, suggesting it was addressed.",
+  "caption": "ΔF1 of audio classification on labels without a voice-over vs. with a voice-over. A large negative value means a model does much worse once narration is removed — evidence it leaned on speech as a shortcut. Gemini 1.5 Flash drops ~18%, suggesting its training data was speech-heavy; the effect largely disappears in Gemini 2.0 Flash, so it seems to have been fixed.",
   "metric": "ΔF1 (A): no voice-over − with voice-over",
   "models": [
     { "model": "Gemini 1.5 Pro",   "delta": -18.88 },

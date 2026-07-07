@@ -146,35 +146,49 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 problem-title">Can we tell if a model is truly multimodal?</h2>
+        <h2 class="title is-3 problem-title">Does your model actually listen or just look?</h2>
         <p class="section-intro">
-          Audio-visual models should understand both what they hear and what they see — but
-          standard benchmarks like the VGGSound&nbsp;<a class="cite" href="https://arxiv.org/abs/2004.14368" target="_blank" rel="noopener">[1]</a> can't verify either.
+          A good audio-visual model should understand what it hears and what it sees equally well.
+          Often it doesn't, many models quietly favour one sense over the other. And standard
+          benchmarks like VGGSound&nbsp;<a class="cite" href="https://arxiv.org/abs/2004.14368" target="_blank" rel="noopener">[1]</a>
+          can't catch this, because they never record whether a label can be heard or seen.
         </p>
       </div>
     </div>
-    <div class="problem-cards">
-      <div class="problem-card scroll-scale">
-        <div class="problem-num">1</div>
-        <h4>Joint scores can't tell <em>listening</em> from <em>looking</em></h4>
-        <p>Without per-modality ground truth, a model that ignores audio entirely scores the same
-        as one with true audio-visual understanding.</p>
-      </div>
-      <div class="problem-card scroll-scale">
-        <div class="problem-num">2</div>
-        <h4>One label per clip marks <em>correct</em> predictions as errors</h4>
-        <p>Most clips contain several classes — many only audible or only visible. Predicting a
-        class the single label misses counts as a mistake, and ~48% of samples are
-        modality-misaligned.</p>
-      </div>
-    </div>
-    <div class="problem-answer">
+
+    <div class="problem-answer is-active">
       <span class="problem-answer-icon">✓</span>
       <p>
-        <strong>VGGSound<em>er</em></strong> re-annotates the VGGSound's test set to fix both — here is
-        what changes.
+        <strong>VGGSound<em>er</em></strong> labels every class as heard, seen, or both, so you can
+        check exactly what a model sees and hears, and quantify which modality it prefers.
       </p>
     </div>
+
+    <div class="findings-preview">
+      <h3 class="findings-title">What we found</h3>
+      <ul class="findings-list">
+        <li>
+          <span class="findings-emoji">👁️</span>
+          <div><strong>Vision over audio.</strong> Many foundation models lean on what they see and
+          forget what they hear once video is added.</div>
+        </li>
+        <li>
+          <span class="findings-emoji">🎞️</span>
+          <div><strong>Motion over stills.</strong> Many models do noticeably worse on clips that
+          are just a still image than on real video.</div>
+        </li>
+        <li>
+          <span class="findings-emoji">🗣️</span>
+          <div><strong>Speech bias.</strong> Several models lean on spoken narration as a shortcut,
+          and stumble when it's gone.</div>
+        </li>
+      </ul>
+      <div class="findings-cta">
+        <a href="#when-to-use" class="button findings-explore">Explore dataset</a>
+        <a href="#confusion-results" class="button findings-jump">See the evidence ↓</a>
+      </div>
+    </div>
+
   </div>
 </section>
 <!--/ The problem. -->
@@ -220,7 +234,7 @@
       </div>
     </div>
     <p class="vs-enables">
-      <strong>This unlocks:</strong>
+      <strong>What this makes measurable:</strong>
       <span class="vs-pill">modality profiling</span>
       <span class="vs-pill">modality confusion</span>
       <span class="vs-pill">controlled, confounder-free evaluation</span>
@@ -246,7 +260,7 @@
         <p class="section-intro">
           This is the task our Mechanical Turk annotators faced. Watch the clip and decide,
           for each proposed label, whether it is <strong>audible</strong>, <strong>visible</strong>,
-          both, or neither — then check your answers against VGGSound<em>er</em>'s ground-truth
+          both, or neither, then check your answers against VGGSound<em>er</em>'s ground-truth
           modality annotations.
         </p>
         <div class="quiz" id="quiz-app"></div>
@@ -273,7 +287,6 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
@@ -285,16 +298,25 @@
               <span class="label audible meta">voice over <span class="badge">Meta</span></span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
+              <strong>Visible only:</strong>
+            </div>
+            <div class="labels">
+              <span class="label visible">sea waves</span>
+            </div>
+          </div>
+
+          <div class="label-category">
+            <div class="category-header">
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
-              <span class="label both">motorboat, speedboat acceleration <span class="badge">Original</span></span>
               <span class="label both">sloshing water</span>
               <span class="label both">splashing water</span>
+              <span class="label both">spraying water</span>
+              <span class="label both">motorboat, speedboat acceleration <span class="badge">Original</span></span>
             </div>
           </div>
         </div>
@@ -310,24 +332,21 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
+              <span class="label audible">male speech, man speaking</span>
               <span class="label audible">people sniggering</span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
-              <span class="label both original">fireworks banging</span>
+              <span class="label both">fireworks banging <span class="badge">Original</span></span>
               <span class="label both">footsteps on snow</span>
-            <span class="label both">lighting firecrackers <span class="badge">Original</span></span>
-            <span class="label both">male speech, man speaking</span>
             </div>
           </div>
         </div>
@@ -343,7 +362,6 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
@@ -351,27 +369,25 @@
               <span class="label audible">people sniggering</span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">👁️</span>
               <strong>Visible only:</strong>
             </div>
             <div class="labels">
               <span class="label visible">splashing water</span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
-              <span class="label both original">dog barking</span>
+              <span class="label both">dog barking <span class="badge">Original</span></span>
               <span class="label both">dog bow-wow</span>
-            <span class="label both">goat bleating</span>
-            <span class="label both">sea lion barking</span>
+              <span class="label both">goat bleating</span>
+              <span class="label both">sea lion barking</span>
             </div>
           </div>
         </div>
@@ -388,28 +404,26 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
               <span class="label audible">air horn</span>
-              <span class="label audible">voice over <span class="badge">Meta</span></span>
+              <span class="label audible">male speech, man speaking</span>
+              <span class="label audible meta">voice over <span class="badge">Meta</span></span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
-              <span class="label both">male speech, man speaking</span>
               <span class="label both">people cheering</span>
               <span class="label both">people crowd</span>
               <span class="label both">playing hockey</span>
+              <span class="label both">playing lacrosse</span>
             </div>
           </div>
-        
         </div>
       </div>
 
@@ -423,20 +437,28 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
+              <strong>Audible only:</strong>
+            </div>
+            <div class="labels">
+              <span class="label audible">people belly laughing</span>
+              <span class="label audible meta">voice over <span class="badge">Meta</span></span>
+            </div>
+          </div>
+
+          <div class="label-category">
+            <div class="category-header">
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
               <span class="label both">child speech, kid speaking</span>
               <span class="label both">children shouting</span>
               <span class="label both">male speech, man speaking</span>
-              <span class="label both">people belly laughing</span>
               <span class="label both">people cheering</span>
               <span class="label both">people crowd</span>
               <span class="label both">people screaming</span>
-              <span class="label both">people sniggering</span>
               <span class="label both">sloshing water <span class="badge">Original</span></span>
               <span class="label both">swimming</span>
+              <span class="label both">people sniggering</span>
             </div>
           </div>
         </div>
@@ -452,7 +474,6 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
@@ -465,16 +486,17 @@
               <span class="label audible meta">background music <span class="badge">Meta</span></span>
             </div>
           </div>
-          
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
               <span class="label both">dog barking</span>
               <span class="label both">dog bow-wow <span class="badge">Original</span></span>
+              <span class="label both">dog baying</span>
+              <span class="label both">dog growling</span>
+              <span class="label both">dog whimpering</span>
             </div>
           </div>
         </div>
@@ -490,25 +512,23 @@
         <div class="labels-container">
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">🔊</span>
               <strong>Audible only:</strong>
             </div>
             <div class="labels">
               <span class="label audible">cricket chirping</span>
+              <span class="label audible">female speech, woman speaking</span>
               <span class="label audible">owl hooting <span class="badge">Original</span></span>
               <span class="label audible">wind noise</span>
-              <span class="label audible">wind rustling leaves</span>
+              <span class="label audible meta">voice over <span class="badge">Meta</span></span>
             </div>
           </div>
-          
+
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
               <span class="label both">fire crackling</span>
-              <span class="label audible">female speech, woman speaking</span>
             </div>
           </div>
         </div>
@@ -522,16 +542,23 @@
           </video>
         </div>
         <div class="labels-container">
-          
           <div class="label-category">
             <div class="category-header">
-              <span class="icon">📹</span>
+              <strong>Audible only:</strong>
+            </div>
+            <div class="labels">
+              <span class="label audible">people screaming</span>
+              <span class="label audible meta">voice over <span class="badge">Meta</span></span>
+            </div>
+          </div>
+
+          <div class="label-category">
+            <div class="category-header">
               <strong>Audible & Visible:</strong>
             </div>
             <div class="labels">
+              <span class="label both">engine accelerating, revving, vroom</span>
               <span class="label both">motorboat, speedboat acceleration <span class="badge">Original</span></span>
-              <span class="label both original">people screaming</span>
-              <span class="label both">rowboat, canoe, kayak rowing</span>
               <span class="label both">splashing water</span>
             </div>
           </div>
@@ -551,7 +578,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Adding a modality can make models <em>worse</em></h2>
         <p class="section-intro">
-          A model can answer correctly from audio alone — then <em>lose</em> that answer once it
+          A model can answer correctly from audio alone, then <em>lose</em> that answer once it
           also sees the video. We call this <strong>modality confusion</strong>. Toggle the input
           below to see it happen.
         </p>
@@ -569,7 +596,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Modality confusion across models</h2>
         <p class="section-intro">
-          VGGSound<em>er</em>'s per-modality annotations let us profile every model — and even
+          VGGSound<em>er</em>'s per-modality annotations let us profile every model, and even
           surface biases in the data they were trained on.
         </p>
       </div>
@@ -628,14 +655,20 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The VGGSound dataset is commonly used to benchmark audio-visual classification, but it
-            suffers from incomplete labelling, partially overlapping classes, and misaligned
-            modalities, which distort evaluations of auditory and visual capabilities. We introduce
-            VGGSound<em>er</em>, a comprehensively re-annotated, multi-label test set that extends
-            VGGSound and is designed to evaluate audio-visual foundation models. VGGSound<em>er</em>
-            adds detailed per-label modality annotations, enabling precise modality-specific
-            analyses, and we reveal model limitations by measuring the performance degradation that
-            occurs when a second input modality is added — our new <em>modality confusion</em> metric.
+            The emergence of audio-visual foundation models underscores 
+            the importance of reliably assessing their multimodal understanding. 
+            The VGGSound dataset is commonly used as a benchmark for evaluating 
+            audio-visual classification. However, our analysis identifies several limitations of
+            VGGSound, including incomplete labelling, partially overlapping classes, 
+            and misaligned modalities. These lead to distorted evaluations of auditory and visual capabilities.
+            To address these limitations, we introduce VGGSound<em>er</em>,
+            a comprehensively re-annotated, multi-label test set that
+            extends VGGSound and is specifically designed to evaluate audio-visual foundation models. VGGSound<em>er</em> features
+            detailed modality annotations, enabling precise analyses
+            of modality-specific performance. Furthermore, we reveal
+            model limitations by analysing performance degradation
+            when adding another input modality with our new modality
+            confusion metric.
           </p>
         </div>
       </div>
